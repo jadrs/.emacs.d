@@ -1,0 +1,55 @@
+
+sending emails: http://wideaperture.net/blog/?p=3343
+
+VM mail client: http://wideaperture.net/blog/?p=3270
+
+
+Install GNUTLS
+
+    sudo apt-get install gnutls-bin
+
+Next, create a text file called ‘.authinfo’ in your home (~) directory, with the following contents:
+
+    machine smtp.gmail.com login [username]@gmail.com password [password]
+
+Note that this should all be one line; according to Denis Bueno carriage returns will cause cause errors in the login process.
+
+Before moving on, since this file has your password in it, we’ll make some changes to the document’s access privileges to prevent unauthorized use. Go to the command line and enter the following commands in sequence:
+
+    % chmod go-rwx .authinfo
+    % chmod u+rw .authinfo
+
+Next, we’ll make a few changes to the .emacs file to set Emacs up for outgoing mail. Replace the text in brackets with your personal information.
+
+
+    ;;Configure Outbound Mail
+
+    ;;Tell the program who you are
+
+    (setq user-full-name "[Firstname Lastname]")
+    (setq user-mail-address "[username]@gmail.com")
+
+    ;;Tell Emacs to use GNUTLS instead of STARTTLS
+    ;;to authenticate when sending mail.
+
+    (setq starttls-use-gnutls t)
+
+    ;;Tell Emacs about your mail server and credentials
+
+    (setq send-mail-function 'smtpmail-send-it
+    message-send-mail-function 'smtpmail-send-it
+    smtpmail-starttls-credentials
+    '(("smtp.gmail.com" 587 nil nil))
+    smtpmail-auth-credentials
+    (expand-file-name "~/.authinfo")
+    smtpmail-default-smtp-server "smtp.gmail.com"
+    smtpmail-smtp-server "smtp.gmail.com"
+    smtpmail-smtp-service 587
+    smtpmail-debug-info t)
+    (require 'smtpmail)
+
+At this point, you should be able to send email from your Gmail account using Emacs.  To compose a message, enter the following command:
+
+    C-x m
+
+Signature: create ~/.signature and write what ever you like
