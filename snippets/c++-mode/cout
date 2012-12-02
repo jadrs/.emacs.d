@@ -1,0 +1,5 @@
+# name: cout std::cout << ... << std::endl;
+# key: cout
+# --
+std::cout << ${1:text} << std::endl;
+$0
