@@ -7,11 +7,18 @@
 ;; programming hooks
 (add-hook 'prog-mode-hook 'linum-mode)
 
+;; open .h files in c++-mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; indentation style
 (setq-default indent-tabs-mode nil)
 (setq-default c-default-style "linux")
 (setq-default c-basic-offset 2)     ;; use 2 spaces
 (setq c-tab-always-indent "other")  ;; do not indent if literal
+
+;; C/C++ switch-case tunning
+(c-set-offset 'case-label '+)
+(c-set-offset 'statement-case-open 0)
 
 ;; spell-checking
 (setq-default ispell-program-name "aspell")
@@ -29,18 +36,14 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 
 ;; keybindings
-(global-set-key (kbd "C-c +") 'text-scale-increase)
-(global-set-key (kbd "C-c -") 'text-scale-decrease)
-(global-set-key (kbd "C-.")   'repeat)
-
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-(global-set-key [f7] 'switch-to-previous-buffer)
-(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c g") 'goto-line)
+(global-set-key (kbd "C-c +")       'text-scale-increase)
+(global-set-key (kbd "C-c -")       'text-scale-decrease)
+(global-set-key (kbd "C-.")         'repeat)
+(global-set-key (kbd "C-c c")       'comment-or-uncomment-region)
+(global-set-key (kbd "C-c g")       'goto-line)
 (global-set-key (kbd "M-S-<right>") 'switch-to-next-buffer)
 (global-set-key (kbd "M-S-<left>")  'switch-to-prev-buffer)
+(global-set-key (kbd "M-S-<up>")    'buffer-menu)
 
 ;; electric modes
 (electric-pair-mode t)
@@ -49,10 +52,9 @@
 
 ;; Autocompletion/snippets
 (global-set-key (kbd "M-'") 'hippie-expand)
-(setq snippets-dir (concat emacs-dir "snippets"))
+(setq yas-snippets-dir (concat emacs-dir "snippets")) ; override default snippets
 (require 'yasnippet)
 (yas--initialize)
-(yas/load-directory snippets-dir)
 
 ;; WriteGood-mode
 (add-to-list 'load-path (concat non-elpa-dir "writegood-mode.el"))
