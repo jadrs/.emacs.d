@@ -5,11 +5,12 @@
 ;; (load-theme 'jrg t)
 
 ;; Remove uncessary UI elements
-(tool-bar-mode   -1)
 (scroll-bar-mode -1)
+(tool-bar-mode   -1)
+(menu-bar-mode   -1)
 
 ;; Font
-(set-face-attribute 'default nil :height 100 :family "Monospace")
+(set-face-attribute 'default nil :height 90 :family "Monospace")
 
 ;; blink instead of beep
 (setq visible-bell t)

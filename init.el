@@ -5,6 +5,7 @@
 
 ;; Don't want any startup message
 (setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
 
 ;; Don't want any backup files nor autosaving
 (setq make-backup-files        nil)
@@ -24,7 +25,7 @@
   (package-refresh-contents))
 
 ;; Packages installed by default
-(defvar my-packages '(auctex python yasnippet)
+(defvar my-packages '(auctex python yasnippet member-function cpputils-cmake google-c-style xml-rpc);; gtags)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)

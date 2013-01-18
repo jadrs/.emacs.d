@@ -10,11 +10,17 @@
 ;; open .h files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; indentation style
-(setq-default indent-tabs-mode nil)
-(setq-default c-default-style "linux")
-(setq-default c-basic-offset 2)     ;; use 2 spaces
-(setq c-tab-always-indent "other")  ;; do not indent if literal
+;; ;;indentation style
+;; (setq-default c-default-style "linux")
+;; (setq-default c-basic-offset 2)     ;; use 2 spaces
+;; (setq c-tab-always-indent "other")  ;; do not indent if literal
+;; (setq-default indent-tabs-mode nil)
+
+;; Google C++ Style
+;; http://code.google.com/p/google-styleguide/
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; C/C++ switch-case tunning
 (c-set-offset 'case-label '+)
@@ -45,13 +51,17 @@
 (global-set-key (kbd "M-S-<left>")  'switch-to-prev-buffer)
 (global-set-key (kbd "M-S-<up>")    'buffer-menu)
 
+(global-set-key (kbd "C-M-k")       'kill-this-buffer)
+
 ;; electric modes
 (electric-pair-mode t)
-;;(electric-indent-mode t)
-;;(electric-layout-mode t)
+;; (electric-indent-mode t)
+;; (electric-layout-mode t)
 
-;; Autocompletion/snippets
+;; Autocompletion
 (global-set-key (kbd "M-'") 'hippie-expand)
+
+;; snippets
 (setq yas-snippets-dir (concat emacs-dir "snippets")) ; override default snippets
 (require 'yasnippet)
 (yas--initialize)
