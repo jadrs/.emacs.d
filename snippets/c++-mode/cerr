@@ -1,5 +1,0 @@
-# name: cerr std::cerr << ... << std::endl;
-# key: cerr
-# --
-std::cerr << ${1:text} << std::endl;
-$0

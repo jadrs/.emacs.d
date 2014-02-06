@@ -1,7 +1,0 @@
-# name: do { ... } while (...)
-# key: do
-# --
-while( ${1:condition} )
-{
-  $0
-};

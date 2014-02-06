@@ -1,30 +1,44 @@
+;;; _ui.el
 
 ;; Theme
-(load-theme 'tsdh-dark t)
+(require 'zenburn-theme)
+(load-theme 'zenburn t)
+
+;; Interactivelly-do-things
+(require 'ido)
+(ido-mode t)
+
+;; Add colors to the terminal (M-x term)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 ;; (add-to-list 'custom-theme-load-path (concat emacs-dir "themes/"))
 ;; (load-theme 'jrg t)
+
+;(set-foreground-color "gray90")
+(set-background-color "black")
 
 ;; Remove uncessary UI elements
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (menu-bar-mode   -1)
 
-;; Font
-(set-face-attribute 'default nil :height 90 :family "Monospace")
+;; ;; Font
+;; (set-face-attribute 'default nil :height 110 :family "Monospace")
 
 ;; blink instead of beep
 (setq visible-bell t)
 
 ;; Modeline
-(line-number-mode t)
-(column-number-mode t)
+(line-number-mode     t)
+(column-number-mode   t)
 (size-indication-mode t)
 
 ;;behavior
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; linum-mode style
-(setq linum-format "%d ")
+(global-linum-mode t)
+(setq linum-format "%3d ")
 
 ;; highlights current line
 (global-hl-line-mode t)

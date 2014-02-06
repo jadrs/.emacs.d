@@ -1,20 +1,32 @@
+;;; _editing.el
 
 ;; Settings for better editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (delete-selection-mode t)
 (show-paren-mode t)
 
+;; flycheck
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; autopair
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
+
 ;; programming hooks
 (add-hook 'prog-mode-hook 'linum-mode)
+
+;; open .m files in octave-mode
+(add-to-list 'auto-mode-alist' ("\\.m\\'" . octave-mode))
 
 ;; open .h files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; ;;indentation style
-;; (setq-default c-default-style "linux")
-;; (setq-default c-basic-offset 2)     ;; use 2 spaces
-;; (setq c-tab-always-indent "other")  ;; do not indent if literal
-;; (setq-default indent-tabs-mode nil)
+;; auto-fill collumn width
+(setq-default fill-column 79)
+
+;; highlight entire bracket expression
+(setq show-paren-style 'expression)
 
 ;; Google C++ Style
 ;; http://code.google.com/p/google-styleguide/
@@ -50,23 +62,15 @@
 (global-set-key (kbd "M-S-<right>") 'switch-to-next-buffer)
 (global-set-key (kbd "M-S-<left>")  'switch-to-prev-buffer)
 (global-set-key (kbd "M-S-<up>")    'buffer-menu)
-
 (global-set-key (kbd "C-M-k")       'kill-this-buffer)
-
-;; electric modes
-(electric-pair-mode t)
-;; (electric-indent-mode t)
-;; (electric-layout-mode t)
-
-;; Autocompletion
-(global-set-key (kbd "M-'") 'hippie-expand)
+(global-set-key (kbd "M-=")         'hippie-expand) ; Autocompletion
 
 ;; snippets
-(setq yas-snippets-dir (concat emacs-dir "snippets")) ; override default snippets
 (require 'yasnippet)
-(yas--initialize)
+;; (setq yas-snippets-dir "~/.emacs.d/snippets")  ; override default snippets
+(yas-global-mode 1)
 
-;; WriteGood-mode
+;; writegood-mode
 (add-to-list 'load-path (concat non-elpa-dir "writegood-mode.el"))
 (require 'writegood-mode)
 (add-hook 'text-mode-hook 'writegood-turn-on)
