@@ -14,8 +14,8 @@
 ;; (add-to-list 'custom-theme-load-path (concat emacs-dir "themes/"))
 ;; (load-theme 'jrg t)
 
-;(set-foreground-color "gray90")
-(set-background-color "black")
+;; ;(set-foreground-color "gray90")
+;; (set-background-color "black")
 
 ;; Remove uncessary UI elements
 (scroll-bar-mode -1)

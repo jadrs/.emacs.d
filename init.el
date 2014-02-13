@@ -27,7 +27,7 @@
 
 ;; Packages installed by default
 (defvar my-packages
-  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet)
+  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet fill-column-indicator tabbar)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
