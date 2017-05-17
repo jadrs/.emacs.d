@@ -12,13 +12,13 @@
   (flycheck-mode))
 (add-hook 'python-mode-hook #'flycheck-python-setup)
 
-(eval-after-load 'flycheck
-  '(progn
-     (require 'flycheck-google-cpplint)
-     ;; Add Google C++ Style checker.
-     ;; In default, syntax checked by Clang and Cppcheck.
-     (flycheck-add-next-checker 'c/c++-clang
-                                'c/c++-googlelint 'append)))
+;; (eval-after-load 'flycheck
+;;   '(progn
+;;      (require 'flycheck-google-cpplint)
+;;      ;; Add Google C++ Style checker.
+;;      ;; In default, syntax checked by Clang and Cppcheck.
+;;      (flycheck-add-next-checker 'c/c++-clang
+;;                                 'c/c++-googlelint 'append)))
 
 ;; autopair
 (require 'autopair)
