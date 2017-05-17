@@ -5,36 +5,62 @@
 (delete-selection-mode t)
 (show-paren-mode t)
 
-;; flycheck
+;; flycheck (needs pylint)
 (require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+(defun flycheck-python-setup ()
+  (flycheck-mode))
+(add-hook 'python-mode-hook #'flycheck-python-setup)
+
+(eval-after-load 'flycheck
+  '(progn
+     (require 'flycheck-google-cpplint)
+     ;; Add Google C++ Style checker.
+     ;; In default, syntax checked by Clang and Cppcheck.
+     (flycheck-add-next-checker 'c/c++-clang
+                                'c/c++-googlelint 'append)))
 
 ;; autopair
 (require 'autopair)
 (autopair-global-mode) ;; to enable in all buffers
 
 ;; auto-fill collumn width
-(setq-default fill-column 79)
+(setq-default fill-column 80)
 
 ;; programming hooks
 (add-hook 'prog-mode-hook 'linum-mode)
 
-(add-hook 'prog-mode-hook 'hs-minor-mode) ;; hide-show blocks of code/comments
+ ;; hide-show blocks of code/comments
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 (add-hook 'prog-mode-hook
           (lambda()
 	    (local-set-key (kbd "M-+") 'hs-show-block)
 	    (local-set-key (kbd "M--") 'hs-hide-block)
 	    (local-set-key (kbd "M-C-+") 'hs-show-all)
 	    (local-set-key (kbd "M-C--") 'hs-hide-all)))
+;; Hide the comments too when you do a 'hs-hide-all'
+(setq hs-hide-comments nil)
+;; Set whether isearch opens folded comments, code, or both
+;; where x is code, comments, t (both), or nil (neither)
+(setq hs-isearch-open 'x)
 
 (require 'fill-column-indicator)
 (add-hook 'prog-mode-hook 'fci-mode)
+
+;; open .markdown files in markdown-mode
+(add-to-list 'auto-mode-alist' ("\\.markdown\\'" . markdown-mode))
 
 ;; open .m files in octave-mode
 (add-to-list 'auto-mode-alist' ("\\.m\\'" . octave-mode))
 
 ;; open .h files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; ;; cython
+;; (require 'cython-mode)
+;; (add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
 
 ;; highlight entire bracket expression
 (setq show-paren-style 'expression)
@@ -80,8 +106,8 @@
 ;; (setq yas-snippets-dir "~/.emacs.d/snippets")  ; override default snippets
 (yas-global-mode 1)
 
-;; writegood-mode
-(add-to-list 'load-path (concat non-elpa-dir "writegood-mode.el"))
-(require 'writegood-mode)
-(add-hook 'text-mode-hook 'writegood-turn-on)
-(add-hook 'latex-mode-hook 'writegood-turn-on)
+;; ;; writegood-mode
+;; (add-to-list 'load-path (concat non-elpa-dir "writegood-mode.el"))
+;; (require 'writegood-mode)
+;; (add-hook 'text-mode-hook 'writegood-turn-on)
+;; (add-hook 'latex-mode-hook 'writegood-turn-on)

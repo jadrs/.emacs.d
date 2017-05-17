@@ -15,7 +15,7 @@
 ;; (load-theme 'jrg t)
 
 ;; ;(set-foreground-color "gray90")
-;; (set-background-color "black")
+;; (set-background-color "gray10")
 
 ;; Remove uncessary UI elements
 (scroll-bar-mode -1)
@@ -24,6 +24,8 @@
 
 ;; ;; Font
 ;; (set-face-attribute 'default nil :height 110 :family "Monospace")
+;; (set-face-attribute 'default nil :family "Inconsolata" :height 120)
+(set-default-font "Inconsolata")
 
 ;; blink instead of beep
 (setq visible-bell t)
@@ -73,6 +75,12 @@
 (global-set-key [M-S-up] 'tabbar-forward-group)
 (global-set-key [M-S-down] 'tabbar-backward-group)
 
+; enter fullscreen mode
+(defun switch-full-screen ()
+  (interactive)
+  (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+(global-set-key [f11] 'switch-full-screen)
+
  ;; customize to show all normal files in one group
 (defun my-tabbar-buffer-groups()
   "Returns the name of the tab group names the current buffer belongs to.
@@ -93,3 +101,6 @@
 ;; '(tabbar-separator (quote (0.5))))
 
 (tabbar-mode t)
+
+(require 'powerline)
+(powerline-default-theme)

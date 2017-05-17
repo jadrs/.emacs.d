@@ -25,9 +25,12 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; solves some dead keys issues
+(require 'iso-transl)
+
 ;; Packages installed by default
 (defvar my-packages
-  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet fill-column-indicator tabbar)
+  '(python google-c-style xml-rpc flycheck flycheck-google-cpplint autopair writegood-mode ido zenburn-theme yasnippet fill-column-indicator tabbar powerline)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
