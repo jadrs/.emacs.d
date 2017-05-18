@@ -75,11 +75,12 @@
 (global-set-key [M-S-up] 'tabbar-forward-group)
 (global-set-key [M-S-down] 'tabbar-backward-group)
 
-; enter fullscreen mode
-(defun switch-full-screen ()
-  (interactive)
-  (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-(global-set-key [f11] 'switch-full-screen)
+;; ; enter fullscreen mode
+;; (defun switch-full-screen ()
+;;   (interactive)
+;;   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+;; (global-set-key [f11] 'switch-full-screen)
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
  ;; customize to show all normal files in one group
 (defun my-tabbar-buffer-groups()
