@@ -56,3 +56,8 @@
 
 ;; Require packages in modules/
 (mapc 'load (directory-files module-dir nil "^[^#].*el$"))
+
+;; Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
