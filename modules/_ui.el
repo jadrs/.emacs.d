@@ -92,7 +92,7 @@
 (set-face-attribute
  'tabbar-unselected nil
  :background "gray30"
- :foreground "white"
+ :foreground "gray75"
  :box '(:line-width 2 :color "gray30" :style nil))
 (set-face-attribute
  'tabbar-selected nil
@@ -101,10 +101,10 @@
  :box '(:line-width 2 :color "gray75" :style nil))
 (set-face-attribute
  'tabbar-highlight nil
- :background "white"
+ :background "gray75"
  :foreground "black"
  :underline nil
- :box '(:line-width 2 :color "white" :style nil))
+ :box '(:line-width 2 :color "gray75" :style nil))
 (set-face-attribute
  'tabbar-modified nil
  :background "gray30"
