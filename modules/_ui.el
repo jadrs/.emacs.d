@@ -1,8 +1,12 @@
 ;;; _ui.el
 
 ;; Theme
-(require 'zenburn-theme)
-(load-theme 'zenburn t)
+;; (require 'zenburn-theme)
+;; (load-theme 'zenburn t)
+(require 'arjen-grey-theme)
+(load-theme 'arjen-grey t)
+;; (require 'gruvbox-theme)
+;; (load-theme 'gruvbox-dark-medium t)
 
 ;; Interactivelly-do-things
 (require 'ido)
@@ -40,7 +44,7 @@
 
 ;; linum-mode style
 (global-linum-mode t)
-(setq linum-format "%3d ")
+(setq linum-format "%3d")
 
 ;; highlights current line
 (global-hl-line-mode t)
@@ -69,18 +73,61 @@
 
 ; tabs for buffers
 (require 'tabbar)
+(tabbar-mode t)
 
 (global-set-key [M-S-left] 'tabbar-backward-tab)
 (global-set-key [M-S-right] 'tabbar-forward-tab)
 (global-set-key [M-S-up] 'tabbar-forward-group)
 (global-set-key [M-S-down] 'tabbar-backward-group)
 
-;; ; enter fullscreen mode
-;; (defun switch-full-screen ()
-;;   (interactive)
-;;   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-;; (global-set-key [f11] 'switch-full-screen)
-(global-set-key [f11] 'toggle-frame-fullscreen)
+; Speed up by not using images
+(setq tabbar-use-images nil)
+
+;; Tabbar settings
+(set-face-attribute
+ 'tabbar-default nil
+ :background "gray20"
+ :foreground "gray20"
+ :box '(:line-width 2 :color "gray20" :style nil))
+(set-face-attribute
+ 'tabbar-unselected nil
+ :background "gray30"
+ :foreground "white"
+ :box '(:line-width 2 :color "gray30" :style nil))
+(set-face-attribute
+ 'tabbar-selected nil
+ :background "gray75"
+ :foreground "black"
+ :box '(:line-width 2 :color "gray75" :style nil))
+(set-face-attribute
+ 'tabbar-highlight nil
+ :background "white"
+ :foreground "black"
+ :underline nil
+ :box '(:line-width 2 :color "white" :style nil))
+(set-face-attribute
+ 'tabbar-modified nil
+ :background "gray30"
+ :foreground "red"
+ :underline nil
+ :box '(:line-width 2 :color "gray30" :style nil))
+(set-face-attribute
+ 'tabbar-selected-modified nil
+ :background "gray75"
+ :foreground "red"
+ :underline nil
+ :box '(:line-width 2 :color "gray75" :style nil))
+(set-face-attribute
+ 'tabbar-button nil
+ :box '(:line-width 2 :color "gray20" :style nil))
+;; (set-face-attribute
+;;  'tabbar-separator nil
+;;  :background "gray20"
+;;  :height 0.6)
+
+;; Change padding of the tabs
+(custom-set-variables
+ '(tabbar-separator (quote (0.5))))
 
  ;; customize to show all normal files in one group
 (defun my-tabbar-buffer-groups()
@@ -93,15 +140,17 @@
 	      (t "user"))))
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
-(set-face-attribute 'tabbar-selected nil
-		    :background "gray75"
-		    :foreground "black"
-		    :box '(:line-width 1 :color "gray75" :style nil))
+;; (set-face-attribute 'tabbar-selected nil
+;; 		    :background "gray75"
+;; 		    :foreground "black"
+;; 		    :box '(:line-width 1 :color "gray75" :style nil))
 
-;; (custom-set-variables
-;; '(tabbar-separator (quote (0.5))))
-
-(tabbar-mode t)
+;; ; enter fullscreen mode
+;; (defun switch-full-screen ()
+;;   (interactive)
+;;   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+;; (global-set-key [f11] 'switch-full-screen)
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
 (require 'powerline)
 (powerline-default-theme)
