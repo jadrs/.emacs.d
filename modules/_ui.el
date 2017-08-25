@@ -48,6 +48,7 @@
 
 ;; highlights current line
 (global-hl-line-mode t)
+(set-face-background 'hl-line "#3e4446")
 
 ; search & replace highlighting
 (setq search-highlight t)           ; Highlight search object
@@ -139,11 +140,6 @@
 	      ((eq major-mode 'dired-mode) "emacs")
 	      (t "user"))))
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
-
-;; (set-face-attribute 'tabbar-selected nil
-;; 		    :background "gray75"
-;; 		    :foreground "black"
-;; 		    :box '(:line-width 1 :color "gray75" :style nil))
 
 ;; ; enter fullscreen mode
 ;; (defun switch-full-screen ()
