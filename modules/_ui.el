@@ -7,6 +7,8 @@
 (load-theme 'arjen-grey t)
 ;; (require 'gruvbox-theme)
 ;; (load-theme 'gruvbox-dark-medium t)
+;;(require 'snazzy-theme)
+;;(load-theme 'snazzy t)
 
 ;; Interactivelly-do-things
 (require 'ido)
@@ -48,7 +50,8 @@
 
 ;; highlights current line
 (global-hl-line-mode t)
-(set-face-background 'hl-line "#3e4446")
+;(set-face-background 'hl-line "#3e4446")
+(set-face-background 'hl-line "#3e448f")
 
 ; search & replace highlighting
 (setq search-highlight t)           ; Highlight search object
