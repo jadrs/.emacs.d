@@ -30,7 +30,7 @@
 
 ;; Packages installed by default
 (defvar my-packages
-  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet fill-column-indicator tabbar powerline arjen-grey-theme auctex-latexmk)
+  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet yasnippet-snippets fill-column-indicator tabbar powerline arjen-grey-theme auctex-latexmk tramp-theme)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -61,21 +61,3 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("8ec2e01474ad56ee33bc0534bdbe7842eea74dccfb576e09f99ef89a705f5501" "0809485f08aa8c9b0100033eaa2d04f6a7410c2afcdbd76ce368a7a8e5744ffb" default)))
- '(package-selected-packages
-   (quote
-    (zenburn-theme yasnippet xml-rpc writegood-mode tabbar spacemacs-theme spacegray-theme snazzy-theme powerline minimal-theme material-theme gruvbox-theme green-is-the-new-black-theme google-c-style flycheck fill-column-indicator darktooth-theme clues-theme blackboard-theme autopair auctex-latexmk arjen-grey-theme)))
- '(tabbar-separator (quote (0.5))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

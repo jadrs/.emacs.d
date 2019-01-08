@@ -12,6 +12,9 @@
   (flycheck-mode))
 (add-hook 'python-mode-hook #'flycheck-python-setup)
 
+(setq flycheck-python-pylint-executable "pylint")
+(setq flycheck-python-flake8-executable "flake8")
+
 ;; (eval-after-load 'flycheck
 ;;   '(progn
 ;;      (require 'flycheck-google-cpplint)
@@ -103,7 +106,7 @@
 
 ;; snippets
 (require 'yasnippet)
-;; (setq yas-snippets-dir "~/.emacs.d/snippets")  ; override default snippets
+;; (setq yas-snippets-dir "~/.emacs.d/snippets")
 (yas-global-mode 1)
 
 ;; ;; writegood-mode
