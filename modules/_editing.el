@@ -114,3 +114,8 @@
 ;; (require 'writegood-mode)
 ;; (add-hook 'text-mode-hook 'writegood-turn-on)
 ;; (add-hook 'latex-mode-hook 'writegood-turn-on)
+
+;; highlight indentation
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-method 'character)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)

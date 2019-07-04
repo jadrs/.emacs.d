@@ -19,7 +19,7 @@
 (require 'package)
 (setq package-archives
       '(("gnu"       . "http://elpa.gnu.org/packages/")
-	("marmalade" . "http://marmalade-repo.org/packages/")
+	;("marmalade" . "http://marmalade-repo.org/packages/")
 	("melpa"     . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 (when (not package-archive-contents)
@@ -30,7 +30,7 @@
 
 ;; Packages installed by default
 (defvar my-packages
-  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet yasnippet-snippets fill-column-indicator tabbar powerline arjen-grey-theme auctex-latexmk tramp-theme)
+  '(python google-c-style xml-rpc flycheck autopair writegood-mode ido zenburn-theme yasnippet yasnippet-snippets fill-column-indicator tabbar powerline arjen-grey-theme auctex-latexmk tramp-theme highlight-indent-guides)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -61,3 +61,21 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("6ebdb33507c7db94b28d7787f802f38ac8d2b8cd08506797b3af6cdfd80632e0" default)))
+ '(package-selected-packages
+   (quote
+    (dockerfile-mode highlight-indent-guides markdown-mode zenburn-theme yasnippet-snippets xml-rpc writegood-mode tramp-theme tabbar python-pylint pylint powerline google-c-style flycheck fill-column-indicator autopair auctex-latexmk arjen-grey-theme)))
+ '(tabbar-separator (quote (0.5))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
