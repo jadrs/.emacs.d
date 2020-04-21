@@ -1,4 +1,4 @@
-;;; _editing.el
+;; _editing.el
 
 ;; Settings for better editing
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -7,13 +7,16 @@
 
 ;; flycheck (needs pylint)
 (require 'flycheck)
-;;(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 (defun flycheck-python-setup ()
   (flycheck-mode))
 (add-hook 'python-mode-hook #'flycheck-python-setup)
 
 (setq flycheck-python-pylint-executable "pylint")
 (setq flycheck-python-flake8-executable "flake8")
+
+(require 'blacken)
+(require 'pyvenv)
 
 ;; (eval-after-load 'flycheck
 ;;   '(progn
@@ -28,7 +31,7 @@
 (autopair-global-mode) ;; to enable in all buffers
 
 ;; auto-fill collumn width
-(setq-default fill-column 80)
+(setq-default fill-column 79)
 
 ;; programming hooks
 (add-hook 'prog-mode-hook 'linum-mode)

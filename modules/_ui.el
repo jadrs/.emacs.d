@@ -1,14 +1,14 @@
 ;;; _ui.el
 
 ;; Theme
-;; (require 'zenburn-theme)
-;; (load-theme 'zenburn t)
 (require 'arjen-grey-theme)
 (load-theme 'arjen-grey t)
-;; (require 'gruvbox-theme)
-;; (load-theme 'gruvbox-dark-medium t)
-;;(require 'snazzy-theme)
-;;(load-theme 'snazzy t)
+
+;; (require 'atom-one-dark-theme)
+;; (load-theme 'atom-one-dark t)
+
+;; (require 'material-theme)
+;; (load-theme 'material t)
 
 ;; Interactivelly-do-things
 (require 'ido)
@@ -75,74 +75,14 @@
 ; copy/paste
 (setq x-select-enable-clipboard t)
 
-; tabs for buffers
-(require 'tabbar)
-(tabbar-mode t)
-
-(global-set-key [M-S-left] 'tabbar-backward-tab)
-(global-set-key [M-S-right] 'tabbar-forward-tab)
-(global-set-key [M-S-up] 'tabbar-forward-group)
-(global-set-key [M-S-down] 'tabbar-backward-group)
-
-; Speed up by not using images
-(setq tabbar-use-images nil)
-
-;; Tabbar settings
-(set-face-attribute
- 'tabbar-default nil
- :background "gray20"
- :foreground "gray20"
- :box '(:line-width 2 :color "gray20" :style nil))
-(set-face-attribute
- 'tabbar-unselected nil
- :background "gray30"
- :foreground "gray75"
- :box '(:line-width 2 :color "gray30" :style nil))
-(set-face-attribute
- 'tabbar-selected nil
- :background "gray75"
- :foreground "black"
- :box '(:line-width 2 :color "gray75" :style nil))
-(set-face-attribute
- 'tabbar-highlight nil
- :background "gray75"
- :foreground "black"
- :underline nil
- :box '(:line-width 2 :color "gray75" :style nil))
-(set-face-attribute
- 'tabbar-modified nil
- :background "gray30"
- :foreground "red"
- :underline nil
- :box '(:line-width 2 :color "gray30" :style nil))
-(set-face-attribute
- 'tabbar-selected-modified nil
- :background "gray75"
- :foreground "red"
- :underline nil
- :box '(:line-width 2 :color "gray75" :style nil))
-(set-face-attribute
- 'tabbar-button nil
- :box '(:line-width 2 :color "gray20" :style nil))
-;; (set-face-attribute
-;;  'tabbar-separator nil
-;;  :background "gray20"
-;;  :height 0.6)
-
-;; Change padding of the tabs
-(custom-set-variables
- '(tabbar-separator (quote (0.5))))
-
- ;; customize to show all normal files in one group
-(defun my-tabbar-buffer-groups()
-  "Returns the name of the tab group names the current buffer belongs to.
- There are two groups: Emacs buffers (those whose name starts
- with '*', plus dired buffers), and the rest.  This works at
- least with Emacs v24.2 using tabbar.el v1.7."
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-	      ((eq major-mode 'dired-mode) "emacs")
-	      (t "user"))))
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+; tabs
+(require 'centaur-tabs)
+(centaur-tabs-mode t)
+(global-set-key (kbd "M-S-<left>")  'centaur-tabs-backward)
+(global-set-key (kbd "M-S-<right>") 'centaur-tabs-forward)
+(global-set-key (kbd "M-S-<up>")  'centaur-tabs-backward-group)
+(global-set-key (kbd "M-S-<down>") 'centaur-tabs-forward-group)
+(setq centaur-tabs-cycle-scope 'tabs)
 
 ;; ; enter fullscreen mode
 ;; (defun switch-full-screen ()
@@ -151,5 +91,10 @@
 ;; (global-set-key [f11] 'switch-full-screen)
 (global-set-key [f11] 'toggle-frame-fullscreen)
 
-(require 'powerline)
-(powerline-default-theme)
+;; (require 'powerline)
+;; (powerline-default-theme)
+
+(require 'smart-mode-line)
+(setq sml/no-confirm-load-theme t)
+(setq sml/theme 'respectful)
+(sml/setup)
