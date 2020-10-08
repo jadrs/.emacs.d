@@ -15,8 +15,8 @@
 (setq flycheck-python-pylint-executable "pylint")
 (setq flycheck-python-flake8-executable "flake8")
 
-(require 'blacken)
-(require 'pyvenv)
+;;(require 'blacken)
+;;(require 'pyvenv)
 
 ;; (eval-after-load 'flycheck
 ;;   '(progn
@@ -101,7 +101,7 @@
 (global-set-key (kbd "C-c -")       'text-scale-decrease)
 (global-set-key (kbd "C-.")         'repeat)
 (global-set-key (kbd "C-c c")       'comment-or-uncomment-region)
-(global-set-key (kbd "C-c g")       'goto-line)
+;(global-set-key (kbd "C-c g")       'goto-line)  ;; default M-g M-g
 ;; (global-set-key (kbd "M-S-<right>") 'switch-to-next-buffer)
 ;; (global-set-key (kbd "M-S-<left>")  'switch-to-prev-buffer)
 (global-set-key (kbd "C-M-k")       'kill-this-buffer)

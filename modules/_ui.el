@@ -1,14 +1,22 @@
 ;;; _ui.el
 
 ;; Theme
-(require 'arjen-grey-theme)
-(load-theme 'arjen-grey t)
+;; (require 'arjen-grey-theme)
+;; (load-theme 'arjen-grey t)
 
-;; (require 'atom-one-dark-theme)
-;; (load-theme 'atom-one-dark t)
+(require 'doom-themes)
+(load-theme 'doom-gruvbox t)
 
-;; (require 'material-theme)
-;; (load-theme 'material t)
+(require 'theme-looper)
+(theme-looper-set-favorite-themes '(doom-gruvbox doom-one-light))
+(global-set-key (kbd "C-}") 'theme-looper-enable-next-theme)
+(global-set-key (kbd "C-{") 'theme-looper-enable-previous-theme)
+
+
+;; highlights current line
+(global-hl-line-mode t)
+;; (set-face-background 'hl-line "#fefefe")
+;; (set-face-background 'hl-line "#3e448f")
 
 ;; Interactivelly-do-things
 (require 'ido)
@@ -48,11 +56,6 @@
 (global-linum-mode t)
 (setq linum-format "%3d")
 
-;; highlights current line
-(global-hl-line-mode t)
-;(set-face-background 'hl-line "#3e4446")
-(set-face-background 'hl-line "#3e448f")
-
 ; search & replace highlighting
 (setq search-highlight t)           ; Highlight search object
 (setq query-replace-highlight    t) ; Highlight query object
@@ -78,11 +81,20 @@
 ; tabs
 (require 'centaur-tabs)
 (centaur-tabs-mode t)
+; to change colors: M-x customize-apropos-faces and then centaur-tabs
+
 (global-set-key (kbd "M-S-<left>")  'centaur-tabs-backward)
 (global-set-key (kbd "M-S-<right>") 'centaur-tabs-forward)
 (global-set-key (kbd "M-S-<up>")  'centaur-tabs-backward-group)
 (global-set-key (kbd "M-S-<down>") 'centaur-tabs-forward-group)
+
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-bar 'over)
 (setq centaur-tabs-cycle-scope 'tabs)
+;(setq centaur-tabs-set-icons nil)
+
+;(setq centaur-tabs-set-modified-marker t)
+;(setq centaur-tabs-modified-marker "*")
 
 ;; ; enter fullscreen mode
 ;; (defun switch-full-screen ()
@@ -94,7 +106,13 @@
 ;; (require 'powerline)
 ;; (powerline-default-theme)
 
-(require 'smart-mode-line)
-(setq sml/no-confirm-load-theme t)
-(setq sml/theme 'respectful)
-(sml/setup)
+(require 'doom-modeline)
+(doom-modeline-mode t)
+(setq doom-modeline-height 16)
+(setq doom-modeline-icon  nil)
+
+;; (require 'smart-mode-line)
+;; (setq sml/no-confirm-load-theme t)
+;; (setq sml/theme 'respectful)
+;; (sml/setup)
+;; Mode-line
